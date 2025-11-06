@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmQuotation_View_V3
     Inherits System.Windows.Forms.Form
 
@@ -6,7 +6,7 @@ Partial Class frmQuotation_View_V3
 
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -23,26 +23,14 @@ Partial Class frmQuotation_View_V3
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(69, 32)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(81, 33)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "From Jeng"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmQuotation_View_V3
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1008, 719)
-        Me.Controls.Add(Me.Button1)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -52,6 +40,4 @@ Partial Class frmQuotation_View_V3
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents Button1 As Button
 End Class

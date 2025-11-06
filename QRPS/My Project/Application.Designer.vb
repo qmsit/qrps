@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.QRPS.frmQT
+            Me.MainForm = Global.QRPS.frmQuotation_View_V3
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
