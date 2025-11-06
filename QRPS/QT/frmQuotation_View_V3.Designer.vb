@@ -27,7 +27,7 @@ Partial Class frmQuotation_View_V3
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(333, 46)
+        Me.Button1.Location = New System.Drawing.Point(92, 40)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(108, 41)
         Me.Button1.TabIndex = 0
