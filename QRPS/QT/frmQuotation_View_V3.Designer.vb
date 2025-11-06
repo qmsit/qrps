@@ -34,7 +34,7 @@ Partial Class frmQuotation_View_V3
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(108, 41)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "From Jeng"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'frmQuotation_View_V3

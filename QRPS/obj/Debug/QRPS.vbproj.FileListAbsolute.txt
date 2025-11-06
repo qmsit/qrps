@@ -10,3 +10,4 @@ D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.exe
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.xml
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.pdb
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.frmQuotation_View_V3.resources
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.frmQT.resources
