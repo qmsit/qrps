@@ -26,9 +26,10 @@ Partial Class frmQT
         '
         'frmQT
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(507, 343)
+        Me.ClientSize = New System.Drawing.Size(745, 394)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frmQT"
         Me.Text = "frmQT"
         Me.ResumeLayout(False)
