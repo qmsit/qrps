@@ -1,2 +1,12 @@
 C:\Users\Administrator\AppData\Local\Temporary Projects\QRPS\bin\Debug\QRPS.exe.config
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.exe.config
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.exe
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.pdb
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.xml
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.vbprojResolveAssemblyReference.cache
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.Form1.resources
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.Resources.resources
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.vbproj.GenerateResource.Cache
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.exe
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.xml
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.pdb
