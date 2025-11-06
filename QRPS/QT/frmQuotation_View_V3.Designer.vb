@@ -31,7 +31,7 @@ Partial Class frmQuotation_View_V3
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(69, 32)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(81, 33)
         Me.Button1.TabIndex = 0
@@ -43,7 +43,7 @@ Partial Class frmQuotation_View_V3
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1008, 719)
         Me.Controls.Add(Me.Button1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmQuotation_View_V3"
