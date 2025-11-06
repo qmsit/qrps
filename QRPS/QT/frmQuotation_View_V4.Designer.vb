@@ -2,8 +2,7 @@
 Partial Class frmQuotation_View_V3
     Inherits System.Windows.Forms.Form
 
-    'TESTING  ONLY'
-
+    'TEST' 
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
