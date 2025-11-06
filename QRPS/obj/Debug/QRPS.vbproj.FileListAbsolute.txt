@@ -3,7 +3,6 @@ D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.exe.config
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.exe
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.pdb
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.xml
-D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.vbprojResolveAssemblyReference.cache
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.Resources.resources
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.vbproj.GenerateResource.Cache
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.exe
@@ -11,3 +10,6 @@ D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.xml
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.pdb
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.frmQuotation_View_V3.resources
 D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.frmQT.resources
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.vbproj.AssemblyReference.cache
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.exe.config
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\obj\Debug\QRPS.vbproj.CoreCompileInputs.cache
