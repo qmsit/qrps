@@ -1,0 +1,2 @@
+C:\Users\Administrator\AppData\Local\Temporary Projects\QRPS\bin\Debug\QRPS.exe.config
+D:\Project\QG\UX_UI\QRPS\QRPS\QRPS\bin\Debug\QRPS.exe.config
