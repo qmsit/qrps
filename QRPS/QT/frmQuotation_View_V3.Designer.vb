@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmQT
+Partial Class frmQuotation_View_V3
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,13 +24,13 @@ Partial Class frmQT
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'frmQT
+        'frmQuotation_View_V3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(473, 365)
-        Me.Name = "frmQT"
-        Me.Text = "frmQT"
+        Me.ClientSize = New System.Drawing.Size(808, 388)
+        Me.Name = "frmQuotation_View_V3"
+        Me.Text = "frmQuotation_View_V3"
         Me.ResumeLayout(False)
 
     End Sub
