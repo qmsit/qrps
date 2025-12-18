@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -89,6 +90,36 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="QT\frmDelete.Designer.vb">
+      <DependentUpon>frmDelete.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QT\frmDelete.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QT\frmEdit.Designer.vb">
+      <DependentUpon>frmEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QT\frmEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QT\frmAddnew.Designer.vb">
+      <DependentUpon>frmAddnew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QT\frmAddnew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QT\frmSelectReport.Designer.vb">
+      <DependentUpon>frmSelectReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QT\frmSelectReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QT\frmNamelist.Designer.vb">
+      <DependentUpon>frmNamelist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QT\frmNamelist.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="QT\frmQuotation_View_V3.Designer.vb">
       <DependentUpon>frmQuotation_View_V3.vb</DependentUpon>
     </Compile>
@@ -103,8 +134,23 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="QT\frmAddnew.resx">
+      <DependentUpon>frmAddnew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QT\frmDelete.resx">
+      <DependentUpon>frmDelete.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QT\frmEdit.resx">
+      <DependentUpon>frmEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QT\frmNamelist.resx">
+      <DependentUpon>frmNamelist.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QT\frmQuotation_View_V3.resx">
       <DependentUpon>frmQuotation_View_V3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QT\frmSelectReport.resx">
+      <DependentUpon>frmSelectReport.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

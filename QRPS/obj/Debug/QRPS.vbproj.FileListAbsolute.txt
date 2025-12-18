@@ -20,10 +20,14 @@ D:\QMSIT\qrps\QRPS\bin\Debug\QRPS.xml
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.vbproj.AssemblyReference.cache
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.exe.config
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.Resources.resources
-D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.frmQT.resources
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.frmQuotation_View_V3.resources
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.vbproj.GenerateResource.cache
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.vbproj.CoreCompileInputs.cache
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.exe
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.xml
 D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.pdb
+D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.frmNamelist.resources
+D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.frmEdit.resources
+D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.frmDelete.resources
+D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.frmAddnew.resources
+D:\QMSIT\qrps\QRPS\obj\Debug\QRPS.frmSelectReport.resources
