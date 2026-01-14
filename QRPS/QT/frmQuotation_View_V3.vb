@@ -10,8 +10,8 @@ Public Class frmQuotation_View_V3
     Private dv As DataView
     Private searchConditions As New System.Collections.Generic.Dictionary(Of String, String)()
     Private dtTransactionLog As DataTable
-    Private dvTransactionLog As DataView ' DataView สำหรับ DataGridView2
-    Private dvLogInitialFilter As String = "" ' สำหรับเก็บ filter เริ่มต้นของ Log (ถ้ามี)
+    Private dvTransactionLog As DataView
+    Private dvLogInitialFilter As String = ""
 
     ' ตัวแปรสถานะ:
     Private isSearchExecuted As Boolean = False  ' สถานะว่าเคย Search ข้อมูลหลักสำเร็จแล้วหรือไม่
@@ -21,11 +21,10 @@ Public Class frmQuotation_View_V3
     ' ===================================================================================================
     ' 2. State Management Helpers (ตัวช่วยในการจัดการสถานะปุ่มและ Controls)
     ' ***************************************************************************************************
-    ' ** ส่วนนี้คือโค้ดที่คุณสามารถปรับแต่งเงื่อนไขการเปิด/ปิด ปุ่มได้อย่างสะดวก **
-    ' ***************************************************************************************************
+
 #Region "State Management"
 
-    ' Sub สำหรับตั้งค่าสถานะของ Controls ในส่วน Filter (ส่วนที่ 2)
+    '  สำหรับตั้งค่าสถานะของ Controls ในส่วน Filter (ส่วนที่ 2)
     Private Sub SetFilterControlState(ByVal enabled As Boolean)
         TextBox_Keyword.Enabled = enabled
         ComboBox_Status.Enabled = enabled
@@ -33,13 +32,16 @@ Public Class frmQuotation_View_V3
         ComboBox_Group.Enabled = enabled
         ComboBox_Type.Enabled = enabled
         Button_ResetFilter.Enabled = enabled
-        ' CheckBox_CreatedByMe.Enabled = True ' โดยปกติ CheckBox ตัวนี้ควรเปิดตลอด
     End Sub
 
+    Private Sub hiding_menu()
+        Button_Search.Visible = False
+
+    End Sub
     ' Function สำหรับรวมค่าจาก Search Controls (ส่วนที่ 1) เพื่อใช้เปรียบเทียบสถานะ
     Private Function GetCurrentSearchState() As String
         Dim stateBuilder As New System.Text.StringBuilder()
-
+        stateBuilder.Append("|")
         stateBuilder.Append(TextBox_Search.Text.Trim().ToUpper())
         stateBuilder.Append("|")
         If ComboBox_CreateBy.SelectedIndex > -1 Then stateBuilder.Append(ComboBox_CreateBy.SelectedItem.ToString())
@@ -49,18 +51,21 @@ Public Class frmQuotation_View_V3
         Return stateBuilder.ToString()
     End Function
 
-    ' Sub สำหรับตั้งค่าสถานะของ Button_Search (เงื่อนไขหลักในการเปิด/ปิดปุ่มค้นหา)
+    ' Sub สำหรับตั้งค่าสถานะของ Button_Search 
     Private Sub SetSearchButtonState()
         Dim currentState As String = GetCurrentSearchState()
-
+        Button_Reset.Visible = False
         If isSearchExecuted Then
-            ' ถ้าเคย Search แล้ว:
-            ' ปุ่ม Search จะเปิดใช้งานได้ต่อเมื่อสถานะปัจจุบันไม่ตรงกับสถานะที่ Search ไปแล้วเท่านั้น
             Button_Search.Enabled = (currentState <> searchInitialState)
+            Button_Search.Visible = False
+
+            Button_Reset.Visible = True
         Else
-            ' ถ้ายังไม่เคย Search (สถานะเริ่มต้น):
-            ' ปุ่ม Search จะเปิดใช้งานเมื่อมีค่าในช่อง Search หลัก หรือมีการเลือก ComboBox อย่างน้อยหนึ่งช่อง
-            Button_Search.Enabled = (Not String.IsNullOrWhiteSpace(TextBox_Search.Text) OrElse ComboBox_CreateBy.SelectedIndex > -1 OrElse ComboBox_Sale.SelectedIndex > -1)
+            Button_Search.Enabled = (Not String.IsNullOrWhiteSpace(TextBox_Search.Text) OrElse
+                         ComboBox_CreateBy.SelectedIndex > -1 OrElse
+                         ComboBox_Sale.SelectedIndex > -1)
+
+            Button_Search.Visible = True
         End If
     End Sub
 
@@ -91,6 +96,7 @@ Public Class frmQuotation_View_V3
     Public Property SearchText As String
         Get
             Return TextBox_Search.Text
+
         End Get
         Set(value As String)
             TextBox_Search.Text = value
@@ -98,26 +104,50 @@ Public Class frmQuotation_View_V3
         End Set
     End Property
 
-
     ' ===================================================================================================
     '  Event Handlers: การจัดการ Search/Filter
     ' ===================================================================================================
 
-    ' ********************
+    ' ***********************************
     ' ** Event สำหรับ Section 1 (Search) **
-    ' ********************
+    ' ***********************************
     Private Sub TextBox_Search_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Search.TextChanged
         SetSearchButtonState()
     End Sub
 
     Private Sub ComboBox_CreateBy_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_CreateBy.SelectedIndexChanged
-        SetSearchButtonState()
+        TriggerAutoSearch()
+        TextBox_Search.Enabled = False
+        Button_Browse.Enabled = False
+        clear_minifillter()
     End Sub
 
     Private Sub ComboBox_Sale_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_Sale.SelectedIndexChanged
-        SetSearchButtonState()
+        TriggerAutoSearch()
+        TextBox_Search.Enabled = False
+        Button_Browse.Enabled = False
+        clear_minifillter()
     End Sub
 
+
+    Private Sub TriggerAutoSearch()
+        If ComboBox_CreateBy.Focused OrElse ComboBox_Sale.Focused Then
+            PrepareAndExecuteSearch()
+
+            isSearchExecuted = True
+            searchInitialState = GetCurrentSearchState()
+
+            SetSearchButtonState()
+            SetFilterControlState(True)
+        End If
+    End Sub
+
+    Private Sub something()
+        ComboBox_CreateBy.Enabled = False
+        ComboBox_Sale.Enabled = False
+        TextBox_Search.Enabled = False
+        Button_Browse.Enabled = False
+    End Sub
     ' เมื่อกดปุ่ม Search
     Private Sub Button_Search_Click(sender As Object, e As EventArgs) Handles Button_Search.Click
 
@@ -126,17 +156,23 @@ Public Class frmQuotation_View_V3
         searchInitialState = GetCurrentSearchState()
 
         SetSearchButtonState()
+        something()
         SetFilterControlState(True)
     End Sub
 
     ' Reset หลัก - เคลียร์ Search และ Filter ทั้งหมด
     Private Sub Button_Reset_Click(sender As Object, e As EventArgs) Handles Button_Reset.Click
-
         TextBox_Search.Clear()
         ComboBox_CreateBy.SelectedIndex = -1
         ComboBox_Sale.SelectedIndex = -1
-        Button_ResetFilter_Click(Nothing, Nothing)
         searchConditions.Clear()
+
+        Button_ResetFilter_Click(Nothing, Nothing)
+
+        TextBox_Search.Enabled = True
+        Button_Browse.Enabled = True
+        ComboBox_CreateBy.Enabled = True
+        ComboBox_Sale.Enabled = True
 
         If dv IsNot Nothing Then
             dv.RowFilter = "1=0"
@@ -145,13 +181,22 @@ Public Class frmQuotation_View_V3
         isSearchExecuted = False
         SetSearchButtonState()
         SetFilterControlState(False)
+
         searchInitialState = GetCurrentSearchState()
     End Sub
 
 
-    ' ********************
+    ' เมื่อกดปุ่ม Browse (เปิด frmNamelist)
+    Private Sub Button_Browse_Click(sender As Object, e As EventArgs) Handles Button_Browse.Click
+        Dim frm As New frmNamelist(Me)
+        frm.ShowDialog()
+    End Sub
+
+
+
+    ' ************************************
     ' ** Event สำหรับ Section 2 (Filter) **
-    ' ********************
+    ' ************************************
 
     Private Sub CheckBox_CreatedByMe_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox_CreatedByMe.CheckedChanged
         ApplyTransactionLogFilter()
@@ -178,7 +223,15 @@ Public Class frmQuotation_View_V3
     End Sub
 
     ' Reset Filter (เฉพาะส่วนล่าง)
+    Private Sub clear_minifillter()
+        ComboBox_Catagories.SelectedIndex = -1
+        ComboBox_Group.SelectedIndex = -1
+        ComboBox_Type.SelectedIndex = -1
+        ComboBox_Status.SelectedIndex = -1
+        TextBox_Keyword.Clear()
+    End Sub
     Private Sub Button_ResetFilter_Click(sender As Object, e As EventArgs) Handles Button_ResetFilter.Click
+
         ComboBox_Catagories.SelectedIndex = -1
         ComboBox_Group.SelectedIndex = -1
         ComboBox_Type.SelectedIndex = -1
@@ -193,7 +246,7 @@ Public Class frmQuotation_View_V3
     End Sub
 
     ' ===================================================================================================
-    ' 5. Core Logic Subs (ฟังก์ชันตรรกะหลัก: Search, Filter, Load Data)
+    ' 5.  Search, Filter, Load Data
     ' ===================================================================================================
 
     Private Sub ApplyTransactionLogFilter()
@@ -209,8 +262,13 @@ Public Class frmQuotation_View_V3
     Private Sub PrepareAndExecuteSearch()
         searchConditions.Clear()
         Dim customerSearch As String = TextBox_Search.Text.Trim()
-        If Not String.IsNullOrEmpty(customerSearch) Then
-            searchConditions.Add("CustomerSearch", String.Format("ลูกค้า LIKE '%{0}%'", customerSearch.Replace("'", "''")))
+        Dim globalSearch As String = TextBox_Search.Text.Trim()
+
+        If Not String.IsNullOrEmpty(globalSearch) Then
+            Dim safeSearch = globalSearch.Replace("'", "''")
+            Dim combinedCondition As String = String.Format("(เลขที่เอกสาร LIKE '%{0}%' OR ลูกค้า LIKE '%{0}%')", safeSearch)
+
+            searchConditions.Add("GlobalSearch", combinedCondition)
         End If
 
         If ComboBox_CreateBy.SelectedIndex > -1 AndAlso Not String.IsNullOrEmpty(ComboBox_CreateBy.SelectedItem.ToString()) Then
@@ -238,9 +296,9 @@ Public Class frmQuotation_View_V3
             Dim filterString As New System.Text.StringBuilder()
             Dim conditions As New System.Collections.Generic.List(Of String)()
 
-            ' ************************************
-            ' ** Search (ส่วนบน)          **
-            ' ************************************
+            ' *****************************
+            ' **    Search (ส่วนบน)       **
+            ' *****************************
             For Each condition In searchConditions.Values
                 conditions.Add(condition)
             Next
@@ -248,9 +306,9 @@ Public Class frmQuotation_View_V3
             If isTemplateActive Then
                 conditions.Add("ประเภทเอกสาร = 'Template'")
             End If
-            ' ************************************
-            ' ** Filter (ส่วนล่าง)        **
-            ' ************************************
+            ' ***************************
+            ' **    Filter (ส่วนล่าง)     **
+            ' ***************************
 
             ' ComboBox_Status (สถานะเอกสาร)
             If ComboBox_Status.SelectedIndex > -1 AndAlso Not String.IsNullOrEmpty(ComboBox_Status.SelectedItem.ToString()) Then
@@ -263,8 +321,6 @@ Public Class frmQuotation_View_V3
             If Not String.IsNullOrEmpty(keyword) Then
                 Dim keywordCondition As String
                 Dim safeKeyword = keyword.Replace("'", "''")
-
-                ' เงื่อนไข OR สำหรับ Keyword
                 keywordCondition = String.Format("(เลขที่เอกสาร LIKE '%{0}%' OR ลูกค้า LIKE '%{0}%')", safeKeyword)
 
                 conditions.Add(keywordCondition)
@@ -273,13 +329,13 @@ Public Class frmQuotation_View_V3
             ' ComboBox_Catagories (Category)
             If ComboBox_Catagories.SelectedIndex > -1 AndAlso Not String.IsNullOrEmpty(ComboBox_Catagories.SelectedItem.ToString()) Then
                 Dim category As String = ComboBox_Catagories.SelectedItem.ToString()
-                conditions.Add(String.Format("ประเภทเอกสาร = '{0}'", category.Replace("'", "''")))
+                'ยังไม่มี
             End If
 
             ' ComboBox_Group 
             If ComboBox_Group.SelectedIndex > -1 AndAlso Not String.IsNullOrEmpty(ComboBox_Group.SelectedItem.ToString()) Then
                 Dim groupValue As String = ComboBox_Group.SelectedItem.ToString()
-                conditions.Add(String.Format("[ประเภทเอกสาร] = '{0}'", groupValue.Replace("'", "''")))
+                'ยังไม่มี
             End If
 
             ' ComboBox_Type
@@ -367,14 +423,9 @@ Public Class frmQuotation_View_V3
                 If DataGridView1.Columns.Contains("วันที่สร้างเอกสาร") Then DataGridView1.Columns("วันที่สร้างเอกสาร").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 If DataGridView1.Columns.Contains("ประเภทเอกสาร") Then DataGridView1.Columns("ประเภทเอกสาร").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 If DataGridView1.Columns.Contains("พนักงานขาย") Then DataGridView1.Columns("พนักงานขาย").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                'If DataGridView1.Columns.Contains("จำนวนเงิน") Then DataGridView1.Columns("จำนวนเงิน").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 If DataGridView1.Columns.Contains("สภานะเอกสาร") Then DataGridView1.Columns("สภานะเอกสาร").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 If DataGridView1.Columns.Contains("ลูกค้า") Then DataGridView1.Columns("ลูกค้า").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                'If DataGridView1.Columns.Contains("ยืนราคา") Then DataGridView1.Columns("ยืนราคา").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                'If DataGridView1.Columns.Contains("ส่งของ") Then DataGridView1.Columns("ส่งของ").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                'If DataGridView1.Columns.Contains("สร้างเอกสารโดย") Then DataGridView1.Columns("สร้างเอกสารโดย").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                'If DataGridView1.Columns.Contains("วันที่อนุมัติ") Then DataGridView1.Columns("วันที่อนุมัติ").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                'If DataGridView1.Columns.Contains("ผู้มีอำนาจลงนาม") Then DataGridView1.Columns("ผู้มีอำนาจลงนาม").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
             End If
         End If
 
@@ -454,7 +505,6 @@ Public Class frmQuotation_View_V3
                 If DataGridView2.Columns.Contains("จำนวนเงิน") Then DataGridView2.Columns("จำนวนเงิน").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 If DataGridView2.Columns.Contains("สภานะเอกสาร") Then DataGridView2.Columns("สภานะเอกสาร").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 If DataGridView2.Columns.Contains("ลูกค้า") Then DataGridView2.Columns("ลูกค้า").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                'If DataGridView2.Columns.Contains("สร้างเอกสารโดย") Then DataGridView2.Columns("สร้างเอกสารโดย").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
                 DataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect
                 DataGridView2.MultiSelect = False
@@ -462,36 +512,7 @@ Public Class frmQuotation_View_V3
         End If
     End Sub
 
-    ' ===================================================================================================
-    ' 6. Unused Handlers 
-    ' ===================================================================================================
-
-    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
-
-    End Sub
-
-    Private Sub DataGridView3_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-
-    End Sub
-
-    ' ประกาศตัวแปรไว้ด้านบนสุดของ Class
     Dim isTemplateActive As Boolean = False
-
-    Private Sub Button_Template_Click(sender As Object, e As EventArgs) Handles Button_Template.Click
-        ' สลับค่า True/False
-        isTemplateActive = Not isTemplateActive
-
-        If isTemplateActive Then
-            Button_Template.BackColor = Color.RoyalBlue
-            Button_Template.ForeColor = Color.White
-        Else
-            Button_Template.BackColor = SystemColors.Control
-            Button_Template.ForeColor = SystemColors.ControlText
-            Button_Template.UseVisualStyleBackColor = True
-        End If
-
-        PerformSearchOrFilter()
-    End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim frmAddnew As New frmAddnew()
@@ -511,11 +532,8 @@ Public Class frmQuotation_View_V3
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim frm As New frmDelete()
 
-        ' วนลูปหาแถวที่ถูกเลือก (SelectedRows) ซึ่งตอนนี้คลิกตรงไหนในแถวก็ได้แล้ว
         For Each row As DataGridViewRow In DataGridView2.SelectedRows
             If Not row.IsNewRow Then
-                ' ดึงข้อมูลจากคอลัมน์ "เลขที่เอกสาร"
-                ' ใช้ชื่อคอลัมน์ตรงๆ เพื่อป้องกันความผิดพลาดถ้ามีการสลับที่ Index
                 If DataGridView2.Columns.Contains("เลขที่เอกสาร") Then
                     frm.ItemsToDelete.Add(row.Cells("เลขที่เอกสาร").Value.ToString())
                 End If
@@ -524,7 +542,6 @@ Public Class frmQuotation_View_V3
 
         ' ตรวจสอบและแสดง Popup
         If frm.ItemsToDelete.Count > 0 Then
-            ' แสดง Popup ยืนยัน
             If frm.ShowDialog() = DialogResult.OK Then
                 ' --- คำสั่งลบข้อมูลออกจาก dtTransactionLog ---
                 ' ตัวอย่างการลบแถวออกจากตารางที่คุณใช้โชว์ (DataTable)
@@ -532,7 +549,7 @@ Public Class frmQuotation_View_V3
                     ' ค้นหาแถวใน dtTransactionLog ที่มีเลขที่เอกสารตรงกันแล้วลบทิ้ง
                     Dim rowsToDelete = dtTransactionLog.Select("[เลขที่เอกสาร] = '" & docNo & "'")
                     For Each r In rowsToDelete
-                        dtTransactionLog.Rows.Remove(r)
+                        'dtTransactionLog.Rows.Remove(r)
                     Next
                 Next
 
@@ -542,4 +559,12 @@ Public Class frmQuotation_View_V3
             MessageBox.Show("กรุณาเลือกแถวข้อมูลที่ต้องการลบก่อน โดยการคลิกที่แถวในตาราง", "แจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
+
+
+
+    Private Sub CheckBox_Template_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox_Template.CheckedChanged
+        isTemplateActive = Not isTemplateActive
+        PerformSearchOrFilter()
+    End Sub
+
 End Class

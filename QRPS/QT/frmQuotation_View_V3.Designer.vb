@@ -27,6 +27,9 @@ Partial Class frmQuotation_View_V3
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button_Browse = New System.Windows.Forms.Button()
+        Me.Button_Reset = New System.Windows.Forms.Button()
+        Me.TextBox_Search = New System.Windows.Forms.TextBox()
+        Me.Label_NoName = New System.Windows.Forms.Label()
         Me.GroupBox_Filter = New System.Windows.Forms.GroupBox()
         Me.Button_ResetFilter = New System.Windows.Forms.Button()
         Me.ComboBox_Status = New System.Windows.Forms.ComboBox()
@@ -40,15 +43,8 @@ Partial Class frmQuotation_View_V3
         Me.Label_Catagories = New System.Windows.Forms.Label()
         Me.TextBox_Keyword = New System.Windows.Forms.TextBox()
         Me.Label_Keyword = New System.Windows.Forms.Label()
-        Me.Button_Template = New System.Windows.Forms.Button()
-        Me.Button_Reset = New System.Windows.Forms.Button()
-        Me.Button_Search = New System.Windows.Forms.Button()
         Me.ComboBox_Sale = New System.Windows.Forms.ComboBox()
         Me.Label_Sale = New System.Windows.Forms.Label()
-        Me.ComboBox_CreateBy = New System.Windows.Forms.ComboBox()
-        Me.Label_CreateBy = New System.Windows.Forms.Label()
-        Me.TextBox_Search = New System.Windows.Forms.TextBox()
-        Me.Label_NoName = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.CheckBox_CreatedByMe = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -56,32 +52,28 @@ Partial Class frmQuotation_View_V3
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.ComboBox_CreateBy = New System.Windows.Forms.ComboBox()
+        Me.Label_CreateBy = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_Template = New System.Windows.Forms.CheckBox()
+        Me.Button_Search = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox_Filter.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Button_Browse)
-        Me.GroupBox1.Controls.Add(Me.GroupBox_Filter)
-        Me.GroupBox1.Controls.Add(Me.Button_Template)
-        Me.GroupBox1.Controls.Add(Me.Button_Reset)
-        Me.GroupBox1.Controls.Add(Me.Button_Search)
-        Me.GroupBox1.Controls.Add(Me.ComboBox_Sale)
-        Me.GroupBox1.Controls.Add(Me.Label_Sale)
-        Me.GroupBox1.Controls.Add(Me.ComboBox_CreateBy)
-        Me.GroupBox1.Controls.Add(Me.Label_CreateBy)
         Me.GroupBox1.Controls.Add(Me.TextBox_Search)
         Me.GroupBox1.Controls.Add(Me.Label_NoName)
         Me.GroupBox1.Font = New System.Drawing.Font("TH Sarabun New", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(2, 2)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(998, 333)
+        Me.GroupBox1.Size = New System.Drawing.Size(228, 58)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "เงื่อนไขการค้นหา"
@@ -89,13 +81,39 @@ Partial Class frmQuotation_View_V3
         'Button_Browse
         '
         Me.Button_Browse.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_Browse.Location = New System.Drawing.Point(74, 23)
+        Me.Button_Browse.Location = New System.Drawing.Point(35, 24)
         Me.Button_Browse.Name = "Button_Browse"
         Me.Button_Browse.Size = New System.Drawing.Size(27, 27)
         Me.Button_Browse.TabIndex = 10
         Me.Button_Browse.Text = "..." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Button_Browse.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button_Browse.UseVisualStyleBackColor = True
+        '
+        'Button_Reset
+        '
+        Me.Button_Reset.Location = New System.Drawing.Point(713, 19)
+        Me.Button_Reset.Name = "Button_Reset"
+        Me.Button_Reset.Size = New System.Drawing.Size(75, 36)
+        Me.Button_Reset.TabIndex = 7
+        Me.Button_Reset.Text = "Reset"
+        Me.Button_Reset.UseVisualStyleBackColor = True
+        '
+        'TextBox_Search
+        '
+        Me.TextBox_Search.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox_Search.Location = New System.Drawing.Point(68, 22)
+        Me.TextBox_Search.Name = "TextBox_Search"
+        Me.TextBox_Search.Size = New System.Drawing.Size(135, 29)
+        Me.TextBox_Search.TabIndex = 1
+        '
+        'Label_NoName
+        '
+        Me.Label_NoName.AutoSize = True
+        Me.Label_NoName.Location = New System.Drawing.Point(6, 25)
+        Me.Label_NoName.Name = "Label_NoName"
+        Me.Label_NoName.Size = New System.Drawing.Size(29, 28)
+        Me.Label_NoName.TabIndex = 0
+        Me.Label_NoName.Text = "No"
         '
         'GroupBox_Filter
         '
@@ -113,16 +131,16 @@ Partial Class frmQuotation_View_V3
         Me.GroupBox_Filter.Controls.Add(Me.Label_Catagories)
         Me.GroupBox_Filter.Controls.Add(Me.TextBox_Keyword)
         Me.GroupBox_Filter.Controls.Add(Me.Label_Keyword)
-        Me.GroupBox_Filter.Location = New System.Drawing.Point(4, 51)
+        Me.GroupBox_Filter.Location = New System.Drawing.Point(13, 66)
         Me.GroupBox_Filter.Name = "GroupBox_Filter"
-        Me.GroupBox_Filter.Size = New System.Drawing.Size(983, 279)
+        Me.GroupBox_Filter.Size = New System.Drawing.Size(989, 279)
         Me.GroupBox_Filter.TabIndex = 9
         Me.GroupBox_Filter.TabStop = False
         Me.GroupBox_Filter.Text = "กรองข้อมูล"
         '
         'Button_ResetFilter
         '
-        Me.Button_ResetFilter.Location = New System.Drawing.Point(873, 16)
+        Me.Button_ResetFilter.Location = New System.Drawing.Point(559, 12)
         Me.Button_ResetFilter.Name = "Button_ResetFilter"
         Me.Button_ResetFilter.Size = New System.Drawing.Size(104, 35)
         Me.Button_ResetFilter.TabIndex = 10
@@ -134,7 +152,7 @@ Partial Class frmQuotation_View_V3
         Me.ComboBox_Status.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox_Status.FormattingEnabled = True
         Me.ComboBox_Status.Items.AddRange(New Object() {"Approved", "Cancel", "Completed", "Draft", "Invalid", "Manager Review", "Reject", "Request Approve"})
-        Me.ComboBox_Status.Location = New System.Drawing.Point(726, 19)
+        Me.ComboBox_Status.Location = New System.Drawing.Point(429, 17)
         Me.ComboBox_Status.Name = "ComboBox_Status"
         Me.ComboBox_Status.Size = New System.Drawing.Size(105, 30)
         Me.ComboBox_Status.TabIndex = 17
@@ -142,9 +160,9 @@ Partial Class frmQuotation_View_V3
         'Label_Status
         '
         Me.Label_Status.AutoSize = True
-        Me.Label_Status.Location = New System.Drawing.Point(680, 22)
+        Me.Label_Status.Location = New System.Drawing.Point(386, 20)
         Me.Label_Status.Name = "Label_Status"
-        Me.Label_Status.Size = New System.Drawing.Size(50, 28)
+        Me.Label_Status.Size = New System.Drawing.Size(37, 13)
         Me.Label_Status.TabIndex = 16
         Me.Label_Status.Text = "Status"
         '
@@ -155,7 +173,7 @@ Partial Class frmQuotation_View_V3
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(5, 52)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(971, 221)
+        Me.DataGridView1.Size = New System.Drawing.Size(977, 221)
         Me.DataGridView1.TabIndex = 2
         '
         'ComboBox_Type
@@ -163,7 +181,7 @@ Partial Class frmQuotation_View_V3
         Me.ComboBox_Type.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox_Type.FormattingEnabled = True
         Me.ComboBox_Type.Items.AddRange(New Object() {"One-time", "Price agreement", "Supporting Doc", "Template"})
-        Me.ComboBox_Type.Location = New System.Drawing.Point(574, 19)
+        Me.ComboBox_Type.Location = New System.Drawing.Point(261, 17)
         Me.ComboBox_Type.Name = "ComboBox_Type"
         Me.ComboBox_Type.Size = New System.Drawing.Size(103, 30)
         Me.ComboBox_Type.TabIndex = 15
@@ -171,9 +189,9 @@ Partial Class frmQuotation_View_V3
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(518, 23)
+        Me.Label1.Location = New System.Drawing.Point(211, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 28)
+        Me.Label1.Size = New System.Drawing.Size(44, 13)
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "ประเภท"
         '
@@ -182,38 +200,42 @@ Partial Class frmQuotation_View_V3
         Me.ComboBox_Group.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox_Group.FormattingEnabled = True
         Me.ComboBox_Group.Items.AddRange(New Object() {"-----------", "A1C Chek Express", "A1C Chek Pro", "AC9600", "AC9603", "Analyzer", "AS-280", "AS-480", "Cal & Control"})
-        Me.ComboBox_Group.Location = New System.Drawing.Point(416, 19)
+        Me.ComboBox_Group.Location = New System.Drawing.Point(886, 14)
         Me.ComboBox_Group.Name = "ComboBox_Group"
         Me.ComboBox_Group.Size = New System.Drawing.Size(96, 30)
         Me.ComboBox_Group.TabIndex = 13
+        Me.ComboBox_Group.Visible = False
         '
         'Label_Group
         '
         Me.Label_Group.AutoSize = True
-        Me.Label_Group.Location = New System.Drawing.Point(368, 23)
+        Me.Label_Group.Location = New System.Drawing.Point(844, 17)
         Me.Label_Group.Name = "Label_Group"
-        Me.Label_Group.Size = New System.Drawing.Size(50, 28)
+        Me.Label_Group.Size = New System.Drawing.Size(36, 13)
         Me.Label_Group.TabIndex = 12
         Me.Label_Group.Text = "Group"
+        Me.Label_Group.Visible = False
         '
         'ComboBox_Catagories
         '
         Me.ComboBox_Catagories.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox_Catagories.FormattingEnabled = True
         Me.ComboBox_Catagories.Items.AddRange(New Object() {"Accessories & Spare Part", "Blood Collection Tube", "Chemistry", "Diagnostic Kit", "Electrolyte", "HbA1C", "Hematology"})
-        Me.ComboBox_Catagories.Location = New System.Drawing.Point(262, 19)
+        Me.ComboBox_Catagories.Location = New System.Drawing.Point(728, 16)
         Me.ComboBox_Catagories.Name = "ComboBox_Catagories"
         Me.ComboBox_Catagories.Size = New System.Drawing.Size(100, 30)
         Me.ComboBox_Catagories.TabIndex = 11
+        Me.ComboBox_Catagories.Visible = False
         '
         'Label_Catagories
         '
         Me.Label_Catagories.AutoSize = True
-        Me.Label_Catagories.Location = New System.Drawing.Point(190, 22)
+        Me.Label_Catagories.Location = New System.Drawing.Point(669, 17)
         Me.Label_Catagories.Name = "Label_Catagories"
-        Me.Label_Catagories.Size = New System.Drawing.Size(77, 28)
+        Me.Label_Catagories.Size = New System.Drawing.Size(57, 13)
         Me.Label_Catagories.TabIndex = 10
         Me.Label_Catagories.Text = "Catagories"
+        Me.Label_Catagories.Visible = False
         '
         'TextBox_Keyword
         '
@@ -228,93 +250,28 @@ Partial Class frmQuotation_View_V3
         Me.Label_Keyword.AutoSize = True
         Me.Label_Keyword.Location = New System.Drawing.Point(4, 23)
         Me.Label_Keyword.Name = "Label_Keyword"
-        Me.Label_Keyword.Size = New System.Drawing.Size(67, 28)
+        Me.Label_Keyword.Size = New System.Drawing.Size(48, 13)
         Me.Label_Keyword.TabIndex = 10
         Me.Label_Keyword.Text = "Keyword"
-        '
-        'Button_Template
-        '
-        Me.Button_Template.Location = New System.Drawing.Point(715, 16)
-        Me.Button_Template.Name = "Button_Template"
-        Me.Button_Template.Size = New System.Drawing.Size(83, 36)
-        Me.Button_Template.TabIndex = 8
-        Me.Button_Template.Text = "Template"
-        Me.Button_Template.UseVisualStyleBackColor = True
-        '
-        'Button_Reset
-        '
-        Me.Button_Reset.Location = New System.Drawing.Point(884, 16)
-        Me.Button_Reset.Name = "Button_Reset"
-        Me.Button_Reset.Size = New System.Drawing.Size(75, 36)
-        Me.Button_Reset.TabIndex = 7
-        Me.Button_Reset.Text = "Reset"
-        Me.Button_Reset.UseVisualStyleBackColor = True
-        '
-        'Button_Search
-        '
-        Me.Button_Search.Location = New System.Drawing.Point(802, 16)
-        Me.Button_Search.Name = "Button_Search"
-        Me.Button_Search.Size = New System.Drawing.Size(75, 36)
-        Me.Button_Search.TabIndex = 6
-        Me.Button_Search.Text = "Search"
-        Me.Button_Search.UseVisualStyleBackColor = True
         '
         'ComboBox_Sale
         '
         Me.ComboBox_Sale.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox_Sale.FormattingEnabled = True
         Me.ComboBox_Sale.Items.AddRange(New Object() {"1-C&Y", "1-CO", "1-SER", "1-TPT", "ไม่ ระบุ", "กชกร แสงไกร"})
-        Me.ComboBox_Sale.Location = New System.Drawing.Point(580, 21)
+        Me.ComboBox_Sale.Location = New System.Drawing.Point(244, 20)
         Me.ComboBox_Sale.Name = "ComboBox_Sale"
-        Me.ComboBox_Sale.Size = New System.Drawing.Size(121, 30)
+        Me.ComboBox_Sale.Size = New System.Drawing.Size(98, 30)
         Me.ComboBox_Sale.TabIndex = 5
         '
         'Label_Sale
         '
         Me.Label_Sale.AutoSize = True
-        Me.Label_Sale.Location = New System.Drawing.Point(516, 25)
+        Me.Label_Sale.Location = New System.Drawing.Point(174, 25)
         Me.Label_Sale.Name = "Label_Sale"
         Me.Label_Sale.Size = New System.Drawing.Size(69, 28)
         Me.Label_Sale.TabIndex = 4
         Me.Label_Sale.Text = "ผู้แทนขาย"
-        '
-        'ComboBox_CreateBy
-        '
-        Me.ComboBox_CreateBy.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox_CreateBy.FormattingEnabled = True
-        Me.ComboBox_CreateBy.IntegralHeight = False
-        Me.ComboBox_CreateBy.ItemHeight = 22
-        Me.ComboBox_CreateBy.Items.AddRange(New Object() {"4594", "adisorn", "admin", "APICHART", "chalee", "chanon", "jantratip"})
-        Me.ComboBox_CreateBy.Location = New System.Drawing.Point(395, 21)
-        Me.ComboBox_CreateBy.Name = "ComboBox_CreateBy"
-        Me.ComboBox_CreateBy.Size = New System.Drawing.Size(121, 30)
-        Me.ComboBox_CreateBy.TabIndex = 3
-        '
-        'Label_CreateBy
-        '
-        Me.Label_CreateBy.AutoSize = True
-        Me.Label_CreateBy.Location = New System.Drawing.Point(322, 25)
-        Me.Label_CreateBy.Name = "Label_CreateBy"
-        Me.Label_CreateBy.Size = New System.Drawing.Size(74, 28)
-        Me.Label_CreateBy.TabIndex = 2
-        Me.Label_CreateBy.Text = "Create By"
-        '
-        'TextBox_Search
-        '
-        Me.TextBox_Search.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_Search.Location = New System.Drawing.Point(102, 22)
-        Me.TextBox_Search.Name = "TextBox_Search"
-        Me.TextBox_Search.Size = New System.Drawing.Size(209, 29)
-        Me.TextBox_Search.TabIndex = 1
-        '
-        'Label_NoName
-        '
-        Me.Label_NoName.AutoSize = True
-        Me.Label_NoName.Location = New System.Drawing.Point(6, 25)
-        Me.Label_NoName.Name = "Label_NoName"
-        Me.Label_NoName.Size = New System.Drawing.Size(72, 28)
-        Me.Label_NoName.TabIndex = 0
-        Me.Label_NoName.Text = "No/Name"
         '
         'DataGridView2
         '
@@ -347,7 +304,7 @@ Partial Class frmQuotation_View_V3
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Controls.Add(Me.DataGridView2)
         Me.GroupBox2.Font = New System.Drawing.Font("TH Sarabun New", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(5, 334)
+        Me.GroupBox2.Location = New System.Drawing.Point(5, 340)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(864, 395)
         Me.GroupBox2.TabIndex = 20
@@ -398,22 +355,81 @@ Partial Class frmQuotation_View_V3
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'ComboBox_CreateBy
+        '
+        Me.ComboBox_CreateBy.Font = New System.Drawing.Font("TH Sarabun New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox_CreateBy.FormattingEnabled = True
+        Me.ComboBox_CreateBy.IntegralHeight = False
+        Me.ComboBox_CreateBy.ItemHeight = 22
+        Me.ComboBox_CreateBy.Items.AddRange(New Object() {"4594", "adisorn", "admin", "APICHART", "chalee", "chanon", "jantratip"})
+        Me.ComboBox_CreateBy.Location = New System.Drawing.Point(79, 20)
+        Me.ComboBox_CreateBy.Name = "ComboBox_CreateBy"
+        Me.ComboBox_CreateBy.Size = New System.Drawing.Size(91, 30)
+        Me.ComboBox_CreateBy.TabIndex = 3
+        '
+        'Label_CreateBy
+        '
+        Me.Label_CreateBy.AutoSize = True
+        Me.Label_CreateBy.Location = New System.Drawing.Point(3, 22)
+        Me.Label_CreateBy.Name = "Label_CreateBy"
+        Me.Label_CreateBy.Size = New System.Drawing.Size(74, 28)
+        Me.Label_CreateBy.TabIndex = 2
+        Me.Label_CreateBy.Text = "Create By"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.CheckBox_Template)
+        Me.GroupBox3.Controls.Add(Me.Label_CreateBy)
+        Me.GroupBox3.Controls.Add(Me.ComboBox_CreateBy)
+        Me.GroupBox3.Controls.Add(Me.Label_Sale)
+        Me.GroupBox3.Controls.Add(Me.ComboBox_Sale)
+        Me.GroupBox3.Font = New System.Drawing.Font("TH Sarabun New", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(247, 2)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(460, 58)
+        Me.GroupBox3.TabIndex = 11
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "เงื่อนไขการค้นหา"
+        '
+        'CheckBox_Template
+        '
+        Me.CheckBox_Template.AutoSize = True
+        Me.CheckBox_Template.Location = New System.Drawing.Point(352, 20)
+        Me.CheckBox_Template.Name = "CheckBox_Template"
+        Me.CheckBox_Template.Size = New System.Drawing.Size(91, 32)
+        Me.CheckBox_Template.TabIndex = 9
+        Me.CheckBox_Template.Text = "Template"
+        Me.CheckBox_Template.UseVisualStyleBackColor = True
+        '
+        'Button_Search
+        '
+        Me.Button_Search.Location = New System.Drawing.Point(713, 18)
+        Me.Button_Search.Name = "Button_Search"
+        Me.Button_Search.Size = New System.Drawing.Size(75, 36)
+        Me.Button_Search.TabIndex = 6
+        Me.Button_Search.Text = "Search"
+        Me.Button_Search.UseVisualStyleBackColor = True
+        '
         'frmQuotation_View_V3
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1008, 729)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.GroupBox_Filter)
+        Me.Controls.Add(Me.Button_Reset)
         Me.Controls.Add(Me.CheckBox_CreatedByMe)
+        Me.Controls.Add(Me.Button_Search)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Margin = New System.Windows.Forms.Padding(2)
-        Me.MinimizeBox = False
         Me.Name = "frmQuotation_View_V3"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "   "
-        Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
+        Me.TopMost = True
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox_Filter.ResumeLayout(False)
@@ -421,6 +437,8 @@ Partial Class frmQuotation_View_V3
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -430,12 +448,7 @@ Partial Class frmQuotation_View_V3
     Friend WithEvents Label_NoName As Label
     Friend WithEvents ComboBox_Sale As ComboBox
     Friend WithEvents Label_Sale As Label
-    Friend WithEvents ComboBox_CreateBy As ComboBox
-    Friend WithEvents Label_CreateBy As Label
     Friend WithEvents TextBox_Search As TextBox
-    Friend WithEvents Button_Reset As Button
-    Friend WithEvents Button_Search As Button
-    Friend WithEvents Button_Template As Button
     Friend WithEvents GroupBox_Filter As GroupBox
     Friend WithEvents TextBox_Keyword As TextBox
     Friend WithEvents Label_Keyword As Label
@@ -457,4 +470,10 @@ Partial Class frmQuotation_View_V3
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents ComboBox_CreateBy As ComboBox
+    Friend WithEvents Label_CreateBy As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents CheckBox_Template As CheckBox
+    Friend WithEvents Button_Search As Button
+    Friend WithEvents Button_Reset As Button
 End Class
