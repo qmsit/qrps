@@ -129,12 +129,6 @@ Public Class frmQuotation_View_V3
         SetFilterControlState(True)
     End Sub
 
-    ' เมื่อกดปุ่ม Browse (เปิด frmNamelist)
-    Private Sub Button_Browse_Click(sender As Object, e As EventArgs) Handles Button_Browse.Click
-        Dim frm As New frmNamelist(Me)
-        frm.ShowDialog()
-    End Sub
-
     ' Reset หลัก - เคลียร์ Search และ Filter ทั้งหมด
     Private Sub Button_Reset_Click(sender As Object, e As EventArgs) Handles Button_Reset.Click
 
